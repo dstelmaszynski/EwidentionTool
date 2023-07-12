@@ -1,18 +1,28 @@
 package pl.dstelamszynski.code;
 
+import java.time.Month;
+
 public class LeapYearCheck {
-    static void leapYearChecker(int yearValue) {
-        int isLeapYear = 1;
-        int isNotLeapYear = 0;
-        if ((yearValue % 4 == 0) && (yearValue % 100 != 0)) {
-            yearValue = isLeapYear;
-            System.out.println("It's leap year!");
-        } else if (yearValue % 400 == 0) {
-            yearValue = isLeapYear;
-            System.out.println("It's leap year!");
+    DataProvider dataProvider = new DataProvider();
+    public void leapYearChecker() {
+        int yearScannerValue = dataProvider.yearScanner();
+        if ((yearScannerValue % 4 == 0) && (yearScannerValue % 100 != 0)) {
+            System.out.println("It's leap year! Type YES!");
+        } else if (yearScannerValue % 400 == 0) {
+            System.out.println("It's leap year! Type YES!");
         } else {
-            yearValue = isNotLeapYear;
-            System.out.println("Nope, it's not leap year!");
+            System.out.println("Nope, it's not leap year! Type NO!");
         }
     }
+
+    public void monthValidation(){
+        String monthValue = dataProvider.yearBooleanScanner().toUpperCase();
+        if (monthValue == "YES"){
+            monthValue = String.valueOf(Month.valueOf(monthValue).length(true));
+        }else if(monthValue == "NO") {
+            monthValue = String.valueOf(Month.valueOf(monthValue).length(false));
+        }
+    }
+
+
 }

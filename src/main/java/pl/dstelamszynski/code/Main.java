@@ -1,19 +1,22 @@
 package pl.dstelamszynski.code;
 
-import static pl.dstelamszynski.code.DataProvider.yearValue;
-import static pl.dstelamszynski.code.LeapYearCheck.leapYearChecker;
-
 public class Main {
     public static void main(String[] args) {
 
         System.out.println("Is it leap year? Please enter year YYYY!");
-        leapYearChecker(yearValue);
+        LeapYearCheck leapYearCheck = new LeapYearCheck();
+        leapYearCheck.leapYearChecker();
 
-//        int monthValue = dataProvider.month.getValue();
+        leapYearCheck.monthValidation();
 
-        System.out.println("Please enter month!");
+//        LeapYearCheck leapYearCheck = new LeapYearCheck();
 
-//        int lengthLeapYear = dataProvider.month.length(true);
+
+
+//        System.out.println("Please enter month!");
+//
+
+
 //        int lengthNotLeapYear = dataProvider.month.length(false);
 
 
