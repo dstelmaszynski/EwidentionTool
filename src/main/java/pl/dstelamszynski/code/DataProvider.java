@@ -1,6 +1,5 @@
 package pl.dstelamszynski.code;
 
-import java.time.Month;
 import java.util.Scanner;
 
 public class DataProvider {
@@ -14,8 +13,8 @@ public class DataProvider {
         return scanner.next();
     }
 
-    public Month monthNameScanner(){
-        return Month.valueOf(scanner.next().toUpperCase());
+    public String monthNameScanner(){
+        return scanner.next().toUpperCase();
     }
 
 }
