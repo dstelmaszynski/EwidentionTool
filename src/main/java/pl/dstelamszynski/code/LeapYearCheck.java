@@ -1,8 +1,5 @@
 package pl.dstelamszynski.code;
 
-import java.time.Month;
-import java.util.HashMap;
-
 public class LeapYearCheck {
     DataProvider dataProvider = new DataProvider();
 
@@ -22,15 +19,11 @@ public class LeapYearCheck {
 
     public void monthValidation() {
         dataProvider.monthAsIntScanner();
-
-
         String isLeapYearInputValue = dataProvider.yearBooleanScanner().toUpperCase();
-        if (isLeapYearInputValue == ("YES")) {
-            dataProvider.isMonthFromLeapYear = String.valueOf(Month.valueOf(isLeapYearInputValue).length(true));
-            dataProvider.someMap.put(dataProvider.listDateParams.get(1), true);
-        } else if (isLeapYearInputValue == ("NO")) {
-            dataProvider.isMonthFromLeapYear = String.valueOf(Month.valueOf(isLeapYearInputValue).length(false));
-           dataProvider.someMap.put(dataProvider.listDateParams.get(1), false);
+        if (isLeapYearInputValue.equals("YES")) {
+            dataProvider.boolResultLeapYear.add(true);
+        } else if (isLeapYearInputValue.equals("NO")) {
+           dataProvider.boolResultLeapYear.add(false);
 
         }
 

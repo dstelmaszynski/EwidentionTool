@@ -9,7 +9,7 @@ public class WorkdayFind {
 
         int searchedMonthAsInt = leapYearCheck.dataProvider.listDateParams.get(1);
         Month month = Month.of(searchedMonthAsInt);
-        System.out.println("Again TRUE/FALSE: " + leapYearCheck.dataProvider.someMap.toString());
+        System.out.println("Again TRUE/FALSE: " + leapYearCheck.dataProvider.boolResultLeapYear);
 //        int searchedMonthLength = month.length(leapYearCheck.isLeapYearParam);
 //        System.out.println("Month length: " + searchedMonthLength + " days.");
 

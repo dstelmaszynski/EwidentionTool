@@ -5,7 +5,7 @@ import java.util.*;
 public class DataProvider implements ScannerInterface {
     Scanner scanner = new Scanner(System.in);
     List<Integer> listDateParams = new ArrayList<>();
-    HashMap<Integer, Boolean> someMap = new HashMap<>();
+    List<Boolean> boolResultLeapYear = new ArrayList<>();
     int yearInput;
     int monthInput;
     String isMonthFromLeapYear;
