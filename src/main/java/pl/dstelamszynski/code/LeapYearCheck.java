@@ -4,7 +4,6 @@ public class LeapYearCheck {
     DataProvider dataProvider = new DataProvider();
 
 
-
     public int leapYearChecker() {
         int yearScannerValue = dataProvider.yearScanner();
         if ((yearScannerValue % 4 == 0) && (yearScannerValue % 100 != 0)) {
@@ -23,14 +22,8 @@ public class LeapYearCheck {
         if (isLeapYearInputValue.equals("YES")) {
             dataProvider.boolResultLeapYear.add(true);
         } else if (isLeapYearInputValue.equals("NO")) {
-           dataProvider.boolResultLeapYear.add(false);
+            dataProvider.boolResultLeapYear.add(false);
 
         }
-
-//        isLeapYearValidated = Boolean.parseBoolean(isLeapYearInputValue);
-//        someMap.put(dataProvider.listDateParams.get(1), isLeapYearValidated);
-
     }
-
-
 }
