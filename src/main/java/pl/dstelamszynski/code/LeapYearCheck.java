@@ -1,10 +1,14 @@
 package pl.dstelamszynski.code;
 
 import java.time.Month;
+import java.util.HashMap;
 
 public class LeapYearCheck {
     DataProvider dataProvider = new DataProvider();
-    public void leapYearChecker() {
+
+
+
+    public int leapYearChecker() {
         int yearScannerValue = dataProvider.yearScanner();
         if ((yearScannerValue % 4 == 0) && (yearScannerValue % 100 != 0)) {
             System.out.println("It's leap year! Type YES when asked!");
@@ -13,17 +17,26 @@ public class LeapYearCheck {
         } else {
             System.out.println("Nope, it's not leap year! Type NO when asked!");
         }
+        return yearScannerValue;
     }
 
-    public boolean monthValidation(){
-        boolean isMonthFromLeapYear = false;
-        String monthValue = dataProvider.yearBooleanScanner().toUpperCase();
-        if (monthValue == "YES"){
-            isMonthFromLeapYear = Boolean.parseBoolean(String.valueOf(Month.valueOf(monthValue).length(true)));
-        }else if(monthValue == "NO") {
-            isMonthFromLeapYear = Boolean.parseBoolean(String.valueOf(Month.valueOf(monthValue).length(false)));
+    public void monthValidation() {
+        dataProvider.monthAsIntScanner();
+
+
+        String isLeapYearInputValue = dataProvider.yearBooleanScanner().toUpperCase();
+        if (isLeapYearInputValue == ("YES")) {
+            dataProvider.isMonthFromLeapYear = String.valueOf(Month.valueOf(isLeapYearInputValue).length(true));
+            dataProvider.someMap.put(dataProvider.listDateParams.get(1), true);
+        } else if (isLeapYearInputValue == ("NO")) {
+            dataProvider.isMonthFromLeapYear = String.valueOf(Month.valueOf(isLeapYearInputValue).length(false));
+           dataProvider.someMap.put(dataProvider.listDateParams.get(1), false);
+
         }
-        return isMonthFromLeapYear;
+
+//        isLeapYearValidated = Boolean.parseBoolean(isLeapYearInputValue);
+//        someMap.put(dataProvider.listDateParams.get(1), isLeapYearValidated);
+
     }
 
 

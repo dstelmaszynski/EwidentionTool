@@ -1,37 +1,38 @@
 package pl.dstelamszynski.code;
 
 import java.time.Month;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("Please enter year YYYY!\n");
-        LeapYearCheck leapYearCheck = new LeapYearCheck();
-        leapYearCheck.leapYearChecker();
 
-        System.out.println("Please enter month!\n");
-        System.out.print(
-                """
-                        1. January
-                        2. February
-                        3. March
-                        4. April
-                        5. May
-                        6. June
-                        7. July
-                        8. August
-                        9. September
-                        10. October
-                        11. November
-                        12. December""");
+        WorkdayFind workdayFind = new WorkdayFind();
+
+        workdayFind.leapYearCheck.leapYearChecker();
+        workdayFind.leapYearCheck.monthValidation();
+        workdayFind.leapYearCheck.dataProvider.dayScanner();
 
 
-        String nameOfSearchedMonth = leapYearCheck.dataProvider.monthNameScanner();
-        System.out.println("Please type:\n YES if it's leap year\n NO if it's not\n");
-        Month month = Month.valueOf(nameOfSearchedMonth);
-        System.out.println("\n" + month.length(leapYearCheck.monthValidation()));
+
+        List<Integer> dateParams = workdayFind.leapYearCheck.dataProvider.listDateParams;
+        System.out.println(dateParams);
 
 
+        //TODO monthNameScanner() call
+
+//        System.out.println("\n Month length: " + month.length());
+
+
+        workdayFind.workdayFinder();
+
+        Counter counter = new Counter();
+//        System.out.println("Please enter value: mileage at petrol!");
+//        int mileAgeInputEnd = LeapYearCheck.dataProvider.mileAgeScanner();
+//        System.out.println("Please enter value: mileage at the beginning!");
+//        int mileAgeInputStart = LeapYearCheck.dataProvider.mileAgeScanner();
+//        int partialResult = counter.mileAgeCounter(mileAgeInputEnd, mileAgeInputStart);
+//        System.out.println(partialResult);
 
 
 //        System.out.println("Days in month: " +);
