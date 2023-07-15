@@ -7,23 +7,18 @@ public class LeapYearCheck {
     public int leapYearChecker() {
         int yearScannerValue = dataProvider.yearScanner();
         if ((yearScannerValue % 4 == 0) && (yearScannerValue % 100 != 0)) {
-            System.out.println("It's leap year! Type YES when asked!");
+            System.out.println("It's leap year!");
+            dataProvider.boolResultLeapYear.add(true);
         } else if (yearScannerValue % 400 == 0) {
-            System.out.println("It's leap year! Type YES when asked!");
+            System.out.println("It's leap year!");
+            dataProvider.boolResultLeapYear.add(true);
         } else {
-            System.out.println("Nope, it's not leap year! Type NO when asked!");
+            System.out.println("Nope, it's not leap year!");
+            dataProvider.boolResultLeapYear.add(false);
         }
         return yearScannerValue;
     }
 
-    public void monthValidation() {
-        dataProvider.monthAsIntScanner();
-        String isLeapYearInputValue = dataProvider.yearBooleanScanner().toUpperCase();
-        if (isLeapYearInputValue.equals("YES")) {
-            dataProvider.boolResultLeapYear.add(true);
-        } else if (isLeapYearInputValue.equals("NO")) {
-            dataProvider.boolResultLeapYear.add(false);
 
-        }
-    }
 }
+

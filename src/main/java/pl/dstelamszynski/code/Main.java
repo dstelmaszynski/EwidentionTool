@@ -9,7 +9,7 @@ public class Main {
         WorkdayFind workdayFind = new WorkdayFind();
 
         workdayFind.leapYearCheck.leapYearChecker();
-        workdayFind.leapYearCheck.monthValidation();
+        workdayFind.leapYearCheck.dataProvider.monthAsIntScanner();
         workdayFind.leapYearCheck.dataProvider.dayScanner();
 
 
