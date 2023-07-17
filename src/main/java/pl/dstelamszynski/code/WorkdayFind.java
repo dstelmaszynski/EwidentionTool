@@ -17,7 +17,7 @@ public class WorkdayFind {
         LocalDate localDate = LocalDate.of(listDateParamsLD.get(0), listDateParamsLD.get(1), listDateParamsLD.get(2));
         DayOfWeek dayOfWeek = DayOfWeek.from(localDate);
 
-        List<String> workdaysListAfterValid = new ArrayList<>();
+        List<Integer> workdaysListAfterValid = new ArrayList<>();
         Workdays[] valuesFromEnumWorkdays = Workdays.values();
         String workdaysEnumAsString = Arrays.toString(valuesFromEnumWorkdays);
         String dayOfWeekAsString = dayOfWeek.toString();
@@ -26,9 +26,9 @@ public class WorkdayFind {
         for (int i = 0; i < valuesFromEnumWorkdays.length; i++) {
             if (workdaysEnumAsString.contains(dayOfWeekAsString)) {
                 isWorkingDay = true;
-                workdaysListAfterValid.add(dayOfWeekAsString);
+                workdaysListAfterValid.add(listDateParamsLD.get(2));
                 System.out.println(dayOfWeekAsString + " is working day!");
-                return;
+                break;
             } else {
                 isWorkingDay = false;
                 System.out.println(dayOfWeekAsString + " is NOT working day!");
@@ -36,5 +36,6 @@ public class WorkdayFind {
             }
         }
 
+        System.out.println("List: " + workdaysListAfterValid);
     }
 }
