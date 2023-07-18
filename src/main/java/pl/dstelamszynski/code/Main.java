@@ -6,15 +6,17 @@ public class Main {
     public static void main(String[] args) {
 
 
-        WorkdayFind workdayFind = new WorkdayFind();
+        Counter counter = new Counter();
 
-        workdayFind.leapYearCheck.leapYearChecker();
-        workdayFind.leapYearCheck.dataProvider.monthAsIntScanner();
-        workdayFind.leapYearCheck.dataProvider.dayScanner();
+        counter.workdayFind.leapYearCheck.leapYearChecker();
+        counter.workdayFind.leapYearCheck.dataProvider.monthAsIntScanner();
+        counter.workdayFind.leapYearCheck.dataProvider.dayScanner();
+        counter.workdayFind.leapYearCheck.dataProvider.holidaysFinder();
+        List<Integer> dayOffList = counter.workdayFind.leapYearCheck.dataProvider.dayOffList;
+        System.out.println("Those are my holidays: " + dayOffList);
 
 
-
-        List<Integer> dateParams = workdayFind.leapYearCheck.dataProvider.listDateParams;
+        List<Integer> dateParams = counter.workdayFind.leapYearCheck.dataProvider.listDateParams;
         System.out.println(dateParams);
 
 
@@ -23,9 +25,8 @@ public class Main {
 //        System.out.println("\n Month length: " + month.length());
 
 
-        workdayFind.workdayFinder();
+        counter.workdayFind.workdayFinder();
 
-        Counter counter = new Counter();
 //        System.out.println("Please enter value: mileage at petrol!");
 //        int mileAgeInputEnd = LeapYearCheck.dataProvider.mileAgeScanner();
 //        System.out.println("Please enter value: mileage at the beginning!");

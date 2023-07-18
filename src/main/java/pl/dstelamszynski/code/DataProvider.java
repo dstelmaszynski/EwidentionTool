@@ -6,10 +6,13 @@ public class DataProvider implements ScannerInterface {
     Scanner scanner = new Scanner(System.in);
     List<Integer> listDateParams = new ArrayList<>();
     List<Boolean> boolResultLeapYear = new ArrayList<>();
+    List<Integer> dayOffList = new ArrayList<>();
+    Map<Integer, Integer> dayAndMileage = new LinkedHashMap<>();
     int yearInput;
     int monthInput;
     String isMonthFromLeapYear;
     int dayInput;
+    int holiday;
 
     @Override
     public int yearScanner() {
@@ -71,4 +74,18 @@ public class DataProvider implements ScannerInterface {
         return dayInput;
     }
 
+    @Override
+    public void holidaysFinder() {
+        System.out.println("Please enter day off as number! Type 0 if there is none!");
+        for (int i = 0; i <= 31; i++) {
+            holiday = scanner.nextInt();
+            if (holiday != 0) {
+                System.out.println("Type: 0 if finished or another day off!");
+                dayOffList.add(holiday);
+                dayOffList.removeIf(day -> (day.equals(0)));
+            } else {
+                return;
+            }
+        }
+    }
 }
