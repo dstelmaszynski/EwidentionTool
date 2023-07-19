@@ -10,10 +10,12 @@ public class Main {
 
         counter.workdayFind.leapYearCheck.leapYearChecker();
         counter.workdayFind.leapYearCheck.dataProvider.monthAsIntScanner();
-        counter.workdayFind.leapYearCheck.dataProvider.dayScanner();
+        counter.workdayFind.leapYearCheck.dataProvider.firstDayOfMonth();
         counter.workdayFind.leapYearCheck.dataProvider.holidaysFinder();
         List<Integer> dayOffList = counter.workdayFind.leapYearCheck.dataProvider.dayOffList;
         System.out.println("Those are my holidays: " + dayOffList);
+
+        System.out.println("Map filled with day off values: " + counter.workdayFind.leapYearCheck.dataProvider.dayAndMileage);
 
 
         List<Integer> dateParams = counter.workdayFind.leapYearCheck.dataProvider.listDateParams;

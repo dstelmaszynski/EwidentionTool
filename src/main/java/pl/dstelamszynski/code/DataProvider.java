@@ -1,6 +1,7 @@
 package pl.dstelamszynski.code;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class DataProvider implements ScannerInterface {
     Scanner scanner = new Scanner(System.in);
@@ -67,10 +68,11 @@ public class DataProvider implements ScannerInterface {
     }
 
     @Override
-    public int dayScanner() {
-        System.out.println("Please enter day of the month, as number!");
-        dayInput = scanner.nextInt();
+    public int firstDayOfMonth() {
+//        System.out.println("Please enter day of the month, as number!");
+        dayInput = 1;
         listDateParams.add(dayInput);
+        System.out.println("listDateParams result: " + listDateParams);
         return dayInput;
     }
 
@@ -80,9 +82,12 @@ public class DataProvider implements ScannerInterface {
         for (int i = 0; i <= 31; i++) {
             holiday = scanner.nextInt();
             if (holiday != 0) {
-                System.out.println("Type: 0 if finished or another day off!");
+                System.out.println("Type: 0 if finished or add another day off!");
                 dayOffList.add(holiday);
                 dayOffList.removeIf(day -> (day.equals(0)));
+                for (Integer integer : dayOffList) {
+                    dayAndMileage.put(integer, 0);
+                }
             } else {
                 return;
             }

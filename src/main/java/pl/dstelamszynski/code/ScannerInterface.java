@@ -11,7 +11,7 @@ public interface ScannerInterface {
 
     int fuelingDayScanner();
 
-    int dayScanner();
+    int firstDayOfMonth();
 
     void holidaysFinder();
 }
