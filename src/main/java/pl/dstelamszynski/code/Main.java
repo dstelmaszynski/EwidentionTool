@@ -1,6 +1,8 @@
 package pl.dstelamszynski.code;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,14 +10,26 @@ public class Main {
 
         Counter counter = new Counter();
 
-        counter.workdayFind.leapYearCheck.leapYearChecker();
-        counter.workdayFind.leapYearCheck.dataProvider.monthAsIntScanner();
+        //TODO leapYearChecker() call
+        counter.workdayFind.leapYearCheck.mapWithDaysAndMileageInitFiller();
+
         counter.workdayFind.leapYearCheck.dataProvider.firstDayOfMonth();
         counter.workdayFind.leapYearCheck.dataProvider.holidaysFinder();
         List<Integer> dayOffList = counter.workdayFind.leapYearCheck.dataProvider.dayOffList;
         System.out.println("Those are my holidays: " + dayOffList);
 
-        System.out.println("Map filled with day off values: " + counter.workdayFind.leapYearCheck.dataProvider.dayAndMileage);
+        counter.workdayFind.leapYearCheck.dataProvider.fuelingDayScanner();
+
+
+        Map<Integer, Integer> dayAndMileageValues = counter.workdayFind.leapYearCheck.dataProvider.dayAndMileage;
+        Collection<Integer> values = dayAndMileageValues.values();
+        counter.mileAgeCounter(values);
+//        for (Integer value : values) {
+//           int biggerValueOfMileAge = value;
+//        }
+        System.out.println("Map filled with values: " + dayAndMileageValues);
+//
+//        counter.mileAgeCounter(counter.workdayFind.leapYearCheck.dataProvider.dayAndMileage.values())
 
 
         List<Integer> dateParams = counter.workdayFind.leapYearCheck.dataProvider.listDateParams;

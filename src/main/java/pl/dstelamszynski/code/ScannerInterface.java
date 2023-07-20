@@ -1,5 +1,7 @@
 package pl.dstelamszynski.code;
 
+import java.util.Map;
+
 public interface ScannerInterface {
     int yearScanner() throws Exception;
 
@@ -9,7 +11,7 @@ public interface ScannerInterface {
 
     int mileAgeScanner();
 
-    int fuelingDayScanner();
+    Map<Integer, Integer> fuelingDayScanner();
 
     int firstDayOfMonth();
 

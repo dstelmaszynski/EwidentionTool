@@ -1,7 +1,6 @@
 package pl.dstelamszynski.code;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class DataProvider implements ScannerInterface {
     Scanner scanner = new Scanner(System.in);
@@ -59,17 +58,21 @@ public class DataProvider implements ScannerInterface {
 
     @Override
     public int mileAgeScanner() {
+        System.out.println("Please enter mileage as number!");
         return scanner.nextInt();
     }
 
     @Override
-    public int fuelingDayScanner() {
-        return scanner.nextInt();
+    public Map<Integer, Integer> fuelingDayScanner() {
+        System.out.println("Please enter fueling day as a number!");
+        int dayValue = scanner.nextInt();
+        int mileAgeValue = mileAgeScanner();
+        dayAndMileage.put(dayValue, mileAgeValue);
+        return dayAndMileage;
     }
 
     @Override
     public int firstDayOfMonth() {
-//        System.out.println("Please enter day of the month, as number!");
         dayInput = 1;
         listDateParams.add(dayInput);
         System.out.println("listDateParams result: " + listDateParams);
