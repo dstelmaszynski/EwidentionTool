@@ -3,9 +3,10 @@ package pl.dstelamszynski.code;
 import java.util.*;
 
 public class DataProvider implements ScannerInterface {
+
     Scanner scanner = new Scanner(System.in);
-    List<Integer> listDateParams = new ArrayList<>();
-    List<Boolean> boolResultLeapYear = new ArrayList<>();
+
+    List<Integer> listYearMonthDay = new ArrayList<>();
     List<Integer> dayOffList = new ArrayList<>();
     Map<Integer, Integer> dayAndMileage = new LinkedHashMap<>();
     int yearInput;
@@ -13,6 +14,15 @@ public class DataProvider implements ScannerInterface {
     String isMonthFromLeapYear;
     int dayInput;
     int holiday;
+    int initialMileage;
+    int mileAge;
+
+    @Override
+    public int initialMileageScanner() {
+        System.out.println("Please enter mileage of the first day of the month!");
+        initialMileage = scanner.nextInt();
+        return initialMileage;
+    }
 
     @Override
     public int yearScanner() {
@@ -22,7 +32,7 @@ public class DataProvider implements ScannerInterface {
         } catch (Exception e) {
             throw new InputMismatchException("Wrong input. Try numbers!");
         }
-        listDateParams.add(yearInput);
+        listYearMonthDay.add(yearInput);
         return yearInput;
 
     }
@@ -35,7 +45,7 @@ public class DataProvider implements ScannerInterface {
     }
 
     @Override
-    public int monthAsIntScanner() {
+    public void monthAsIntScanner() {
         System.out.println("Please enter month, as number!\n");
         System.out.print("""
                 1. January
@@ -52,18 +62,17 @@ public class DataProvider implements ScannerInterface {
                 12. December
                 """);
         monthInput = scanner.nextInt();
-        listDateParams.add(monthInput);
-        return monthInput;
+        listYearMonthDay.add(monthInput);
     }
 
     @Override
     public int mileAgeScanner() {
         System.out.println("Please enter mileage as number!");
-        return scanner.nextInt();
+        scanner.nextInt();
+        return mileAge;
     }
 
-    @Override
-    public Map<Integer, Integer> fuelingDayScanner() {
+    public Map<Integer, Integer> fuelingDayAndMileageScanner() {
         System.out.println("Please enter fueling day as a number!");
         int dayValue = scanner.nextInt();
         int mileAgeValue = mileAgeScanner();
@@ -74,8 +83,8 @@ public class DataProvider implements ScannerInterface {
     @Override
     public int firstDayOfMonth() {
         dayInput = 1;
-        listDateParams.add(dayInput);
-        System.out.println("listDateParams result: " + listDateParams);
+        listYearMonthDay.add(dayInput);
+        System.out.println("listDateParams result: " + listYearMonthDay);
         return dayInput;
     }
 
@@ -96,4 +105,47 @@ public class DataProvider implements ScannerInterface {
             }
         }
     }
+
+    public List<Integer> getListYearMonthDay() {
+        return listYearMonthDay;
+    }
+
+
+    public List<Integer> getDayOffList() {
+        return dayOffList;
+    }
+
+    public Map<Integer, Integer> getDayAndMileage() {
+        return dayAndMileage;
+    }
+
+    public int getYearInput() {
+        return yearInput;
+    }
+
+    public int getMonthInput() {
+        return monthInput;
+    }
+
+    public String getIsMonthFromLeapYear() {
+        return isMonthFromLeapYear;
+    }
+
+    public int getDayInput() {
+        return dayInput;
+    }
+
+    public int getHoliday() {
+        return holiday;
+    }
+
+    public int getInitialMileage() {
+        return initialMileage;
+    }
+
+    public int getMileAge() {
+        return mileAge;
+    }
+
 }
+

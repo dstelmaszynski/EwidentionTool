@@ -1,6 +1,5 @@
 package pl.dstelamszynski.code;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -11,28 +10,39 @@ public class Main {
         Counter counter = new Counter();
 
         //TODO leapYearChecker() call
-        counter.workdayFind.leapYearCheck.mapWithDaysAndMileageInitFiller();
+        LeapYearCheck leapYearCheck = counter.workdayFind.leapYearCheck;
+        leapYearCheck.dataProvider.initialMileageScanner();
 
-        counter.workdayFind.leapYearCheck.dataProvider.firstDayOfMonth();
-        counter.workdayFind.leapYearCheck.dataProvider.holidaysFinder();
-        List<Integer> dayOffList = counter.workdayFind.leapYearCheck.dataProvider.dayOffList;
+        leapYearCheck.mapWithDaysAndMileageInitFiller();
+
+//        Map<Integer, Integer> dayAndMileageValues = leapYearCheck.getTempMapWithInitialVal();
+//        counter.mileAgeCounter(dayAndMileageValues, leapYearCheck.dataProvider.getInitialMileage());
+//        System.out.println("Map after filling with first mileage: " + dayAndMileageValues);
+
+
+        leapYearCheck.dataProvider.firstDayOfMonth();
+        leapYearCheck.dataProvider.holidaysFinder();
+        List<Integer> dayOffList = leapYearCheck.dataProvider.getDayOffList();
         System.out.println("Those are my holidays: " + dayOffList);
 
-        counter.workdayFind.leapYearCheck.dataProvider.fuelingDayScanner();
+        leapYearCheck.dataProvider.fuelingDayAndMileageScanner();
+
+//        counter.mileAgeCounter(leapYearCheck.getTempMapWithInitialVal(), leapYearCheck.getFinalMap());
+//        System.out.println("Map after second filing: " + dayAndMileageValues);
+//        counter.mileAgeCounter(counter.workdayFind.leapYearCheck.dataProvider.getDayAndMileage());
 
 
-        Map<Integer, Integer> dayAndMileageValues = counter.workdayFind.leapYearCheck.dataProvider.dayAndMileage;
-        Collection<Integer> values = dayAndMileageValues.values();
-        counter.mileAgeCounter(values);
-//        for (Integer value : values) {
+
+//        counter.mileAgeCounter(keySet);
+//        for (Integer value : keySet) {
 //           int biggerValueOfMileAge = value;
 //        }
-        System.out.println("Map filled with values: " + dayAndMileageValues);
+//        System.out.println("Map filled with keySet: " + dayAndMileageValues);
 //
-//        counter.mileAgeCounter(counter.workdayFind.leapYearCheck.dataProvider.dayAndMileage.values())
+//        counter.mileAgeCounter(counter.workdayFind.leapYearCheck.dataProvider.dayAndMileage.keySet())
 
 
-        List<Integer> dateParams = counter.workdayFind.leapYearCheck.dataProvider.listDateParams;
+        List<Integer> dateParams = leapYearCheck.dataProvider.getListYearMonthDay();
         System.out.println(dateParams);
 
 

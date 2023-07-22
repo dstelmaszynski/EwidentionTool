@@ -7,13 +7,15 @@ public interface ScannerInterface {
 
     String yearBooleanScanner();
 
-    int monthAsIntScanner();
+    void monthAsIntScanner();
 
     int mileAgeScanner();
 
-    Map<Integer, Integer> fuelingDayScanner();
+    Map<Integer, Integer> fuelingDayAndMileageScanner();
 
     int firstDayOfMonth();
 
     void holidaysFinder();
+
+    int initialMileageScanner();
 }

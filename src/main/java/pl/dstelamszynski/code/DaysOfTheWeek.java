@@ -1,6 +1,6 @@
 package pl.dstelamszynski.code;
 
-public enum Workdays {
+public enum DaysOfTheWeek {
     MONDAY,
 
     TUESDAY,
@@ -9,6 +9,9 @@ public enum Workdays {
 
     THURSDAY,
 
-    FRIDAY
+    FRIDAY,
 
+    SATURDAY,
+
+    SUNDAY
 }
