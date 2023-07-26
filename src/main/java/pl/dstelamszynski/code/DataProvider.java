@@ -12,7 +12,8 @@ public class DataProvider implements ScannerInterface {
     int yearInput;
     int monthInput;
     String isMonthFromLeapYear;
-    int dayInput;
+    int firstDayOfTheMonth = 1;
+
     int holiday;
     int initialMileage;
     int mileAge;
@@ -35,6 +36,12 @@ public class DataProvider implements ScannerInterface {
         listYearMonthDay.add(yearInput);
         return yearInput;
 
+    }
+
+    @Override
+    public int dayScanner() {
+        System.out.println("Please enter day as a number!");
+        return scanner.nextInt();
     }
 
     @Override
@@ -82,10 +89,9 @@ public class DataProvider implements ScannerInterface {
 
     @Override
     public int firstDayOfMonth() {
-        dayInput = 1;
-        listYearMonthDay.add(dayInput);
+        listYearMonthDay.add(firstDayOfTheMonth);
         System.out.println("listDateParams result: " + listYearMonthDay);
-        return dayInput;
+        return firstDayOfTheMonth;
     }
 
     @Override
@@ -132,7 +138,7 @@ public class DataProvider implements ScannerInterface {
     }
 
     public int getDayInput() {
-        return dayInput;
+        return firstDayOfTheMonth;
     }
 
     public int getHoliday() {

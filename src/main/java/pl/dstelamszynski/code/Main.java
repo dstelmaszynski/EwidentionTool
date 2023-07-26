@@ -51,7 +51,7 @@ public class Main {
 //        System.out.println("\n Month length: " + month.length());
 
 
-        counter.workdayFind.workdayFinder();
+//        counter.workdayFind.workdayFinder();
 
 //        System.out.println("Please enter value: mileage at petrol!");
 //        int mileAgeInputEnd = LeapYearCheck.dataProvider.mileAgeScanner();
