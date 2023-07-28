@@ -23,7 +23,9 @@ public class Counter {
         }
 
         BigDecimal days = BigDecimal.valueOf(countedDaysBetweenFuelling);
-        BigDecimal partialMileageResult = (mileAge.add(BigDecimal.valueOf(5)).divide(days, 2, RoundingMode.HALF_UP));
+        BigDecimal mileAgeBetweenFirstAndFuelling = mileAge.subtract(BigDecimal.valueOf(initialMileage));
+        BigDecimal partialMileageResult = (
+                mileAgeBetweenFirstAndFuelling.add(BigDecimal.valueOf(5)).divide(days, 2, RoundingMode.HALF_UP));
 
         for (int i = 1; i <= daysBetweenFuellingOriginal; i++) {
             if (mapWithDaysAndMileage.get(i).equals(999)) {
