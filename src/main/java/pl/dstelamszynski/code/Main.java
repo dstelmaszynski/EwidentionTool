@@ -1,36 +1,41 @@
 package pl.dstelamszynski.code;
 
 import java.util.List;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-
-
         Counter counter = new Counter();
 
         //TODO leapYearChecker() call
         LeapYearCheck leapYearCheck = counter.workdayFind.leapYearCheck;
         leapYearCheck.dataProvider.initialMileageScanner();
-
         leapYearCheck.mapWithDaysAndMileageInitFiller();
+        leapYearCheck.dataProvider.firstDayOfMonth();
 
-//        Map<Integer, Integer> dayAndMileageValues = leapYearCheck.getTempMapWithInitialVal();
-//        counter.mileAgeCounter(dayAndMileageValues, leapYearCheck.dataProvider.getInitialMileage());
-//        System.out.println("Map after filling with first mileage: " + dayAndMileageValues);
+        counter.workdayFind.dayOfTheWeekInOrderInput();
+        System.out.println("dayOfTheWeekInMonth: " + counter.workdayFind.dayOfTheWeekInMonth);
+        counter.workdayFind.workdayFinder(leapYearCheck.dataProvider.getDayAndMileage());
+        System.out.println("DayAndMileage: " + leapYearCheck.dataProvider.getDayAndMileage());
 
 
         leapYearCheck.dataProvider.firstDayOfMonth();
         leapYearCheck.dataProvider.holidaysFinder();
         List<Integer> dayOffList = leapYearCheck.dataProvider.getDayOffList();
         System.out.println("Those are my holidays: " + dayOffList);
+        System.out.println("Updated DayAndMileage: " + leapYearCheck.dataProvider.getDayAndMileage());
 
-        leapYearCheck.dataProvider.fuelingDayAndMileageScanner();
+        leapYearCheck.dataProvider.day_amountOfGasoline_mileAge_costScanner();
+        System.out.println("Days_gasolineAmount_mileAge_cost" + leapYearCheck.dataProvider.getDays_gasolineAmount_mileAge_cost());
+
+        counter.mileAgeCounter(
+                leapYearCheck.dataProvider.getDayAndMileage(),
+                leapYearCheck.dataProvider.getInitialMileage(),
+                leapYearCheck.dataProvider.getDays_gasolineAmount_mileAge_cost());
+        System.out.println("Updated DayAndMileage 2: " + leapYearCheck.dataProvider.getDayAndMileage());
 
 //        counter.mileAgeCounter(leapYearCheck.getTempMapWithInitialVal(), leapYearCheck.getFinalMap());
 //        System.out.println("Map after second filing: " + dayAndMileageValues);
 //        counter.mileAgeCounter(counter.workdayFind.leapYearCheck.dataProvider.getDayAndMileage());
-
 
 
 //        counter.mileAgeCounter(keySet);

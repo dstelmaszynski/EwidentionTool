@@ -1,5 +1,6 @@
 package pl.dstelamszynski.code;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class DataProvider implements ScannerInterface {
@@ -9,6 +10,8 @@ public class DataProvider implements ScannerInterface {
     List<Integer> listYearMonthDay = new ArrayList<>();
     List<Integer> dayOffList = new ArrayList<>();
     Map<Integer, Integer> dayAndMileage = new LinkedHashMap<>();
+    List<Object> days_gasolineAmount_mileAge_cost = new ArrayList<>();
+
     int yearInput;
     int monthInput;
     String isMonthFromLeapYear;
@@ -75,16 +78,25 @@ public class DataProvider implements ScannerInterface {
     @Override
     public int mileAgeScanner() {
         System.out.println("Please enter mileage as number!");
-        scanner.nextInt();
+        mileAge = scanner.nextInt();
         return mileAge;
     }
 
-    public Map<Integer, Integer> fuelingDayAndMileageScanner() {
+    public List<Object> day_amountOfGasoline_mileAge_costScanner() {
         System.out.println("Please enter fueling day as a number!");
-        int dayValue = scanner.nextInt();
-        int mileAgeValue = mileAgeScanner();
-        dayAndMileage.put(dayValue, mileAgeValue);
-        return dayAndMileage;
+        Integer dayValueInt = scanner.nextInt();
+        System.out.println("Please enter amount of gasoline as a double!");
+        Double amountOfPetrolDouble = scanner.nextDouble();
+        Integer mileAgeValueInt = mileAgeScanner();
+        System.out.println("Please enter cost in BD!");
+        BigDecimal gasolineCostBD = scanner.nextBigDecimal();
+
+//        dayAndMileage.put(dayValueInt, mileAgeValueInt);
+        days_gasolineAmount_mileAge_cost.add(0, dayValueInt);
+        days_gasolineAmount_mileAge_cost.add(1, amountOfPetrolDouble);
+        days_gasolineAmount_mileAge_cost.add(2, mileAge);
+        days_gasolineAmount_mileAge_cost.add(3, gasolineCostBD);
+        return days_gasolineAmount_mileAge_cost;
     }
 
     @Override
@@ -104,7 +116,7 @@ public class DataProvider implements ScannerInterface {
                 dayOffList.add(holiday);
                 dayOffList.removeIf(day -> (day.equals(0)));
                 for (Integer integer : dayOffList) {
-                    dayAndMileage.put(integer, 0);
+                    dayAndMileage.put(integer, 999);
                 }
             } else {
                 return;
@@ -153,5 +165,8 @@ public class DataProvider implements ScannerInterface {
         return mileAge;
     }
 
+    public List<Object> getDays_gasolineAmount_mileAge_cost() {
+        return days_gasolineAmount_mileAge_cost;
+    }
 }
 

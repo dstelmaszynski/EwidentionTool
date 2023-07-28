@@ -11,23 +11,19 @@ import java.util.stream.Stream;
 public class WorkdayFind {
 
     public static void main(String[] args) {
-        //---------Base methods call to gather data need later begin---------
-        WorkdayFind workdayFind = new WorkdayFind();
-        LeapYearCheck leapYearCheck = workdayFind.leapYearCheck;
-        leapYearCheck.dataProvider.initialMileageScanner();
-        leapYearCheck.mapWithDaysAndMileageInitFiller();
-        leapYearCheck.dataProvider.firstDayOfMonth();
+//        //---------Base methods call to gather data need later begin---------
+//        WorkdayFind workdayFind = new WorkdayFind();
+//        LeapYearCheck leapYearCheck = workdayFind.leapYearCheck;
+//        leapYearCheck.dataProvider.initialMileageScanner();
+//        leapYearCheck.mapWithDaysAndMileageInitFiller();
+//        leapYearCheck.dataProvider.firstDayOfMonth();
 //---------Base methods call to gather data need later end---------
-
-        System.out.println("testowe" + workdayFind.dayOfTheWeekInMonth);
-        System.out.println("testowe2" + leapYearCheck.dataProvider.getDayAndMileage());
-
-
-        workdayFind.dayOfTheWeekInOrderInput();
-        System.out.println("dayOfTheWeekInMonth: " + workdayFind.dayOfTheWeekInMonth);
-
-        workdayFind.workdayFinder(leapYearCheck.dataProvider.getDayAndMileage());
-        System.out.println("DayAndMileage: " + leapYearCheck.dataProvider.getDayAndMileage());
+//
+//        workdayFind.dayOfTheWeekInOrderInput();
+//        System.out.println("dayOfTheWeekInMonth: " + workdayFind.dayOfTheWeekInMonth);
+//
+//        workdayFind.workdayFinder(leapYearCheck.dataProvider.getDayAndMileage());
+//        System.out.println("DayAndMileage: " + leapYearCheck.dataProvider.getDayAndMileage());
     }
 
     LeapYearCheck leapYearCheck = new LeapYearCheck();
@@ -58,12 +54,11 @@ public class WorkdayFind {
         int listValuesCounter = 0;
         for (int i = 1; i <= daysAndMileage.size(); i++) {
             if (dayOfTheWeekInMonth.get(i).contains(workdayValues.get(listValuesCounter))) {
-                daysAndMileage.replace(i, 99);
                 listValuesCounter++;
                 if (listValuesCounter > 4) {
                     listValuesCounter = 0;
                 }
-            }
+            } else daysAndMileage.replace(i, 999);
         }
         return isWorkingDay;
     }

@@ -1,25 +1,39 @@
 package pl.dstelamszynski.code;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
 import java.util.Map;
 
 public class Counter {
     WorkdayFind workdayFind = new WorkdayFind();
+    int countedDaysBetweenFuelling = 0;
+    public void mileAgeCounter(Map<Integer, Integer> mapWithDaysAndMileage, int initialMileage, List<Object> day_amount_mileAge_cost) {
+        Integer mileageWhenFuelling = (Integer) day_amount_mileAge_cost.get(2);
+        BigDecimal mileAge = BigDecimal.valueOf(mileageWhenFuelling);
+        Integer daysBetweenFuellingOriginal = (Integer) day_amount_mileAge_cost.get(0);
+        Integer daysBetweenFuellingFixed = (Integer) day_amount_mileAge_cost.get(0);
 
+        for (int i = 1; i <= daysBetweenFuellingOriginal; i++) {
+            Integer valueOfMap = mapWithDaysAndMileage.get(i);
+            if (valueOfMap.equals(999)) {
+                daysBetweenFuellingFixed--;
+            }
+            countedDaysBetweenFuelling = daysBetweenFuellingFixed;
+        }
 
-    //TODO null pointer + nie zrobiona metoda dodawania 0 poza 1 dniem miesiaca
-    public void mileAgeCounter(Map<Integer, Integer> mapWithDaysAndMileage, int initialMileage, int dayOfFuelling) {
-        mapWithDaysAndMileage.replace(dayOfFuelling, initialMileage);
+        BigDecimal days = BigDecimal.valueOf(countedDaysBetweenFuelling);
+        BigDecimal partialMileageResult = (mileAge.add(BigDecimal.valueOf(5)).divide(days, 2, RoundingMode.HALF_UP));
 
-//        if (mapWithDaysAndMileage.containsValue("no value")) {
-//            mapWithDaysAndMileage.forEach((d, m) -> {
-//                        mapWithDaysAndMileage.replace(d, "no value", String.valueOf(0));
-//                        mapWithDaysAndMileage.put(1, String.valueOf(initialMileage));
-//                    }
-//            );
-//        }
-
+        for (int i = 1; i <= daysBetweenFuellingOriginal; i++) {
+            if (mapWithDaysAndMileage.get(i).equals(999)) {
+                continue;
+            }
+            mapWithDaysAndMileage.replace(i, partialMileageResult.intValue());
+        }
     }
 
+    //TODO normal mileAgeCounter need to impl. proper logic, version with init param works 28.07
     void mileAgeCounter(Map<Integer, Object> tempMapWithDayAndMileage, Map<Integer, Integer> finalMapWithDayAndMileage) {
         tempMapWithDayAndMileage.forEach((k, v) -> {
             int dayNewValue = k;
@@ -35,21 +49,5 @@ public class Counter {
     }
 }
 
-//        Set<Integer> dayOfMonthToPutKeyVal = tempMapWithDayAndMileage.keySet();
-//        tempMapWithDayAndMileage.p
-//        List<Integer> daysToPutIntoTheMap = dayOfMonthToPutKeyVal.stream().toList();
-//        Stream.of(tempMapWithDayAndMileage).mapToInt((k, v) -> {k.keySet(), })
-//
-//        tempMapWithDayAndMileage.put()
-//        tempMapWithDayAndMileage.put(daysToPutIntoTheMap.get(0), tempMapWithDayAndMileage.valu)
-//        int mileAgePartialSum = 0;
-//        for (Integer value : valuesOfMap) {
-//            int mileAgePartialSumTemp = value;
-//            mileAgePartialSum = mileAgePartialSum + mileAgePartialSumTemp;
-//            System.out.println("Sum: " + mileAgePartialSum);
-//        }
-//        return mileAgePartialSum;
-//        }
-//        }
 
 

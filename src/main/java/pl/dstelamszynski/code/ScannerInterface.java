@@ -1,6 +1,6 @@
 package pl.dstelamszynski.code;
 
-import java.util.Map;
+import java.util.List;
 
 public interface ScannerInterface {
     int yearScanner() throws Exception;
@@ -12,7 +12,7 @@ public interface ScannerInterface {
 
     int mileAgeScanner();
 
-    Map<Integer, Integer> fuelingDayAndMileageScanner();
+    List<Object> day_amountOfGasoline_mileAge_costScanner();
 
     int firstDayOfMonth();
 
