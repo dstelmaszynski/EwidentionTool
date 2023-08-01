@@ -8,8 +8,14 @@ import java.util.Map;
 public class Counter {
     WorkdayFind workdayFind = new WorkdayFind();
     int countedDaysBetweenFuelling = 0;
-    public void mileAgeCounter(Map<Integer, Integer> mapWithDaysAndMileage, int initialMileage, List<Object> day_amount_mileAge_cost) {
+    int tempStartCountFromDay = 0;
+    int tempMileageAfterFuelling = 0;
+
+    public void mileAgeCounterBeginOfTheMonth(Map<Integer, Integer> mapWithDaysAndMileage, int initialMileage,
+                                              List<Object> day_amount_mileAge_cost) {
+
         Integer mileageWhenFuelling = (Integer) day_amount_mileAge_cost.get(2);
+        tempMileageAfterFuelling = mileageWhenFuelling;
         BigDecimal mileAge = BigDecimal.valueOf(mileageWhenFuelling);
         Integer daysBetweenFuellingOriginal = (Integer) day_amount_mileAge_cost.get(0);
         Integer daysBetweenFuellingFixed = (Integer) day_amount_mileAge_cost.get(0);
@@ -33,21 +39,39 @@ public class Counter {
             }
             mapWithDaysAndMileage.replace(i, partialMileageResult.intValue());
         }
+        tempStartCountFromDay = daysBetweenFuellingOriginal + 1;
     }
 
-    //TODO normal mileAgeCounter need to impl. proper logic, version with init param works 28.07
-    void mileAgeCounter(Map<Integer, Object> tempMapWithDayAndMileage, Map<Integer, Integer> finalMapWithDayAndMileage) {
-        tempMapWithDayAndMileage.forEach((k, v) -> {
-            int dayNewValue = k;
-            Integer mileageNewValue = (Integer) v;
-            finalMapWithDayAndMileage.forEach((k2, v2) -> {
-                int dayOldValue = k2;
-                int mileageOldValue = v2;
-                finalMapWithDayAndMileage.replace(dayOldValue, dayNewValue);
-                finalMapWithDayAndMileage.replace(mileageOldValue, mileageNewValue);
-            });
+    public void mileAgeCounter(Map<Integer, Integer> mapWithDaysAndMileage, int tempStartCountFromDay,
+                               int tempMileageAfterFuelling, List<Object> day_amount_mileAge_cost) {
 
-        });
+        Integer mileageWhenFuelling = (Integer) day_amount_mileAge_cost.get(2);
+        BigDecimal mileAge = BigDecimal.valueOf(mileageWhenFuelling);
+        Integer daysBetweenFuellingOriginal = (Integer) day_amount_mileAge_cost.get(0);
+        Integer daysBetweenFuellingFixed = (Integer) day_amount_mileAge_cost.get(0);
+//        Integer daysSubtractedThisPeriod;
+
+        for (int i = tempStartCountFromDay; i <= daysBetweenFuellingOriginal; i++) {
+            Integer valueOfMap = mapWithDaysAndMileage.get(i);
+            if (valueOfMap.equals(999)) {
+//                tempStartCountFromDay--;
+                daysBetweenFuellingFixed--;
+            }
+            countedDaysBetweenFuelling = daysBetweenFuellingFixed - tempStartCountFromDay + 1;
+        }
+
+        BigDecimal days = BigDecimal.valueOf(countedDaysBetweenFuelling);
+        BigDecimal mileAgeBetweenLastFuelling = mileAge.subtract(BigDecimal.valueOf(tempMileageAfterFuelling));
+        BigDecimal partialMileageResult = (
+                mileAgeBetweenLastFuelling.add(BigDecimal.valueOf(5)).divide(days, 2, RoundingMode.HALF_UP));
+
+        for (int i = tempStartCountFromDay; i <= daysBetweenFuellingOriginal; i++) {
+            if (mapWithDaysAndMileage.get(i).equals(999)) {
+                continue;
+            }
+            mapWithDaysAndMileage.replace(i, partialMileageResult.intValue());
+        }
+        tempStartCountFromDay = daysBetweenFuellingOriginal + 1;
     }
 }
 

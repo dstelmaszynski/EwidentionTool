@@ -83,6 +83,7 @@ public class DataProvider implements ScannerInterface {
     }
 
     public List<Object> day_amountOfGasoline_mileAge_costScanner() {
+        days_gasolineAmount_mileAge_cost.clear();
         System.out.println("Please enter fueling day as a number!");
         Integer dayValueInt = scanner.nextInt();
         System.out.println("Please enter amount of gasoline as a double!");
