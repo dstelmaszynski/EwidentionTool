@@ -11,24 +11,10 @@ import java.util.stream.Stream;
 public class WorkdayFind {
 
     public static void main(String[] args) {
-//        //---------Base methods call to gather data need later begin---------
-//        WorkdayFind workdayFind = new WorkdayFind();
-//        LeapYearCheck leapYearCheck = workdayFind.leapYearCheck;
-//        leapYearCheck.dataProvider.initialMileageScanner();
-//        leapYearCheck.mapWithDaysAndMileageInitFiller();
-//        leapYearCheck.dataProvider.firstDayOfMonth();
-//---------Base methods call to gather data need later end---------
-//
-//        workdayFind.dayOfTheWeekInOrderInput();
-//        System.out.println("dayOfTheWeekInMonth: " + workdayFind.dayOfTheWeekInMonth);
-//
-//        workdayFind.workdayFinder(leapYearCheck.dataProvider.getDayAndMileage());
-//        System.out.println("DayAndMileage: " + leapYearCheck.dataProvider.getDayAndMileage());
     }
 
     LeapYearCheck leapYearCheck = new LeapYearCheck();
     Map<Integer, String> dayOfTheWeekInMonth = new LinkedHashMap<>();
-    boolean isWorkingDay;
 
     public void dayOfTheWeekInOrderInput() {
         List<Integer> listYearMonthDay = leapYearCheck.dataProvider.getListYearMonthDay();
@@ -46,8 +32,7 @@ public class WorkdayFind {
         }
     }
 
-    //TODO method replacing workdays works -> need to change replacement value
-    public boolean workdayFinder(Map<Integer, Integer> daysAndMileage) {
+    public void workdayFinder(Map<Integer, Integer> daysAndMileage) {
         Stream<String> workdaysValuesStream = Arrays.stream(Workdays.values()).map(Enum::toString);
         List<String> workdayValues = workdaysValuesStream.toList();
 
@@ -60,7 +45,6 @@ public class WorkdayFind {
                 }
             } else daysAndMileage.replace(i, 999);
         }
-        return isWorkingDay;
     }
 }
 
