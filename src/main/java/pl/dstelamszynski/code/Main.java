@@ -1,9 +1,10 @@
 package pl.dstelamszynski.code;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Counter counter = new Counter();
 
         LeapYearCheck leapYearCheck = counter.workdayFind.leapYearCheck;
@@ -48,6 +49,10 @@ public class Main {
         counter.dayAndMileageMapCleaner(leapYearCheck.dataProvider.getDayAndMileage());
         counter.withoutTaxPayment(leapYearCheck.dataProvider.dayAndCostInvoice);
         leapYearCheck.dataProvider.getDayAndMileage().forEach((k, v) -> System.out.println("Day: " + k + ", mileage: " + v));
+
+
+        ToFileSaver toFileSaver = new ToFileSaver();
+        toFileSaver.fileSaver(leapYearCheck.dataProvider.getDayAndMileage());
 
 
     }
