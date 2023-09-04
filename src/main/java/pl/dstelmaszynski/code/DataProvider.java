@@ -1,8 +1,8 @@
-package pl.dstelamszynski.code;
+package pl.dstelmaszynski.code;
 
 import java.math.BigDecimal;
-import java.util.*;
 
+import java.util.*;
 public class DataProvider implements ScannerInterface {
 
     Scanner scanner = new Scanner(System.in);

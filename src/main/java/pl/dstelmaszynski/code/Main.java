@@ -1,4 +1,4 @@
-package pl.dstelamszynski.code;
+package pl.dstelmaszynski.code;
 
 import java.io.IOException;
 import java.util.List;
@@ -56,6 +56,4 @@ public class Main {
 
 
     }
-
-
 }

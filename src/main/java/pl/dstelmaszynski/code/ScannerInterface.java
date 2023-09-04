@@ -1,4 +1,4 @@
-package pl.dstelamszynski.code;
+package pl.dstelmaszynski.code;
 
 public interface ScannerInterface {
     int yearScanner() throws Exception;

@@ -1,11 +1,10 @@
-package pl.dstelamszynski.code;
+package pl.dstelmaszynski.code;
+
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class WorkdayFind {
@@ -38,12 +37,14 @@ public class WorkdayFind {
 
         int listValuesCounter = 0;
         for (int i = 1; i <= daysAndMileage.size(); i++) {
-            if (dayOfTheWeekInMonth.get(i).contains(workdayValues.get(listValuesCounter))) {
+            if(CollectionUtils.containsAny(Collections.singleton(dayOfTheWeekInMonth.get(i)), workdayValues)){
                 listValuesCounter++;
+
                 if (listValuesCounter > 4) {
                     listValuesCounter = 0;
                 }
-            } else daysAndMileage.replace(i, 999);
+            }else daysAndMileage.replace(i, 999);
+
         }
     }
 }

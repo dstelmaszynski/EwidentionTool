@@ -1,4 +1,4 @@
-package pl.dstelamszynski.code;
+package pl.dstelmaszynski.code;
 
 import java.time.Month;
 
@@ -16,7 +16,7 @@ public class LeapYearCheck {
         }
     }
 
-    public boolean leapYearChecker() {
+    public void leapYearChecker() {
         int yearScannerValue = dataProvider.yearScanner();
         if ((yearScannerValue % 4 == 0) && (yearScannerValue % 100 != 0)) {
             System.out.println("It's leap year!");
@@ -28,7 +28,6 @@ public class LeapYearCheck {
             System.out.println("Nope, it's not leap year!");
             leapYearCheckValue = false;
         }
-        return leapYearCheckValue;
     }
 
     public boolean isLeapYearCheckValue() {

@@ -1,4 +1,4 @@
-package pl.dstelamszynski.code;
+package pl.dstelmaszynski.code;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
