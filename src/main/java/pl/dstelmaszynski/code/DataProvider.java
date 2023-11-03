@@ -80,10 +80,10 @@ public class DataProvider implements ScannerInterface {
         days_gasolineAmount_mileAge_cost.clear();
         System.out.println("Please enter fueling day as a number!");
         Integer dayValueInt = scanner.nextInt();
-        System.out.println("Please enter amount of gasoline as a double!");
+        System.out.println("Please enter amount of gasoline! Use coma");
         Double amountOfPetrolDouble = scanner.nextDouble();
         mileAgeScanner();
-        System.out.println("Please enter cost in PLN!");
+        System.out.println("Please enter cost in PLN! Use coma!");
         BigDecimal gasolineCostBD = scanner.nextBigDecimal();
 
         dayAndCostInvoice.put(dayValueInt, gasolineCostBD);

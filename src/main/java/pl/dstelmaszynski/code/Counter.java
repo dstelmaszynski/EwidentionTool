@@ -77,7 +77,7 @@ public class Counter {
     }
 
     public void dayAndMileageMapCleaner(Map<Integer, Integer> dayAndMileage){
-        for (int i = 1; i < dayAndMileage.size(); i++) {
+        for (int i = 1; i <= dayAndMileage.size(); i++) {
             if(dayAndMileage.get(i).equals(999)){
                 dayAndMileage.replace(i, 999, 0);
             }
